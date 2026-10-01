@@ -9,5 +9,10 @@ public class GameMain {
 
         player1.print();
         player2.print();
+
+        player2.setInfo("player2","1080 * 560", 30, 1);
+
+        player1.print();
+        player2.print();
     }
 }
