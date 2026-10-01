@@ -1,14 +1,17 @@
 package 싱글톤;
 
 public class Student {
-    Singleton singleton = Singleton.getInstance(); //이미 생성된 싱글톤 객체의 주소를 가져옴
+    private String name;
+    private int id;
 
-    void setInfo(String name,int id) {
-        singleton.name = name;
-        singleton.id = id;
+    // 생성자를 통해 각 학생마다 고유한 값을 초기화
+    public void setInfo(String name, int id) {
+        this.name = name;
+        this.id = id;
     }
+
     public void print() {
-        System.out.println("이름 : " + singleton.name);
-        System.out.println("아이디 : " + singleton.id);
+        System.out.println("이름 : " + name);
+        System.out.println("아이디 : " + id);
     }
 }
