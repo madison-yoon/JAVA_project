@@ -54,20 +54,6 @@ public class CarMain {
         }
 
         while (true) {
-            System.out.print("부가 기능 [1]ON [2]OFF : ");
-            optionChoice = sc.nextInt();
-
-            if (optionChoice == 1) {
-                isModeOn = true;
-                break;
-            } else if (optionChoice == 2) {
-                isModeOn = false;
-                break;
-            }
-            System.out.println("잘못된 입력입니다. 다시 선택해주세요.\n");
-        }
-
-        while (true) {
             System.out.print("날씨 [1]맑음 [2]비 [3]눈 : ");
             weatherChoice = sc.nextInt();
 
@@ -82,25 +68,19 @@ public class CarMain {
             break;
         }
 
-        CarType carType = null;
-        switch (carChoice) {
-            case 1:
-                carType = new SportsCar(passenger, location, weather);
-                break;
-            case 2:
-                carType = new Sedan(passenger, location, weather);
-                break;
-            case 3:
-                carType = new Bus(passenger, location, weather);
-                break;
-        }
+        CarType carType = switch (carChoice) {
+            case 1 -> new SportsCar(passenger, location, weather);
+            case 2 -> new Sedan(passenger, location, weather);
+            case 3 -> new Bus(passenger, location, weather);
+            default -> null;
+        };
 
         carType.setMode(isModeOn);
 
         if (carChoice == 1) {
             // 스포츠카: 터보, 에어컨, 오디오 제어
             System.out.print("터보 모드 사용 [1]ON [2]OFF : ");
-            if (sc.nextInt() == 1) ((SportsCar) carType).setMode(true);
+            if (sc.nextInt() == 1) carType.setMode(true);
 
             System.out.print("에어컨 사용 [1]ON [2]OFF : ");
             if (sc.nextInt() == 1) ((SportsCar) carType).AirConON();
@@ -113,7 +93,7 @@ public class CarMain {
         } else if (carChoice == 2) {
             // 세단: 에어컨, 오디오, 자율주행(또는 좌석 추가 등) 제어
             System.out.print("좌석 추가 모드 사용 [1]ON [2]OFF : ");
-            if (sc.nextInt() == 1) ((Sedan) carType).setMode(true);
+            if (sc.nextInt() == 1) carType.setMode(true);
             System.out.print("에어컨 사용 [1]ON [2]OFF : ");
             if (sc.nextInt() == 1) ((Sedan) carType).AirConON();
             else ((Sedan) carType).AirConOFF();
@@ -129,7 +109,7 @@ public class CarMain {
         } else if (carChoice == 3) {
             // 버스: 에어컨, 자율주행(또는 연료탱크 추가 등) 제어
             System.out.print("연료탱크 추가 모드 사용 [1]ON [2]OFF : ");
-            if (sc.nextInt() == 1) ((Bus) carType).setMode(true);
+            if (sc.nextInt() == 1) carType.setMode(true);
             System.out.print("에어컨 사용 [1]ON [2]OFF : ");
             if (sc.nextInt() == 1) ((Bus) carType).AirConON();
             else ((Bus) carType).AirConOFF();
@@ -137,7 +117,7 @@ public class CarMain {
             System.out.print("자율주행 사용 [1]ON [2]OFF : ");
             if (sc.nextInt() == 1) ((Bus) carType).AutoDriveON();
             else ((Bus) carType).AutoDriveOFF();
-        }
+        } else System.out.println("잘못된 선택입니다.");
 
 
         System.out.println("\n=======" + carType.carName + "=======");
