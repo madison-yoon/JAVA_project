@@ -97,6 +97,49 @@ public class CarMain {
 
         carType.setMode(isModeOn);
 
+        if (carChoice == 1) {
+            // 스포츠카: 터보, 에어컨, 오디오 제어
+            System.out.print("터보 모드 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((SportsCar) carType).setMode(true);
+
+            System.out.print("에어컨 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((SportsCar) carType).AirConON();
+            else ((SportsCar) carType).AirConOFF();
+
+            System.out.print("오디오 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((SportsCar) carType).AudioON();
+            else ((SportsCar) carType).AudioOFF();
+
+        } else if (carChoice == 2) {
+            // 세단: 에어컨, 오디오, 자율주행(또는 좌석 추가 등) 제어
+            System.out.print("좌석 추가 모드 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Sedan) carType).setMode(true);
+            System.out.print("에어컨 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Sedan) carType).AirConON();
+            else ((Sedan) carType).AirConOFF();
+
+            System.out.print("오디오 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Sedan) carType).AudioON();
+            else ((Sedan) carType).AudioOFF();
+
+            System.out.print("자율주행 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Sedan) carType).AutoDriveON();
+            else ((Sedan) carType).AutoDriveOFF();
+
+        } else if (carChoice == 3) {
+            // 버스: 에어컨, 자율주행(또는 연료탱크 추가 등) 제어
+            System.out.print("연료탱크 추가 모드 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Bus) carType).setMode(true);
+            System.out.print("에어컨 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Bus) carType).AirConON();
+            else ((Bus) carType).AirConOFF();
+
+            System.out.print("자율주행 사용 [1]ON [2]OFF : ");
+            if (sc.nextInt() == 1) ((Bus) carType).AutoDriveON();
+            else ((Bus) carType).AutoDriveOFF();
+        }
+
+
         System.out.println("\n=======" + carType.carName + "=======");
         System.out.println("총 비용 : " + String.format("%,d", carType.Cost()) + "원");
         System.out.println("총 주유 횟수 : " + carType.RefuelingCount() + "회");

@@ -1,12 +1,12 @@
 package 매게변수다형성;
 
-public class Vehicle {
+public class Vehicle extends PolyMain{
     public void run() {
         System.out.println("차량이 달립니다.");
     }
 }
 
-class Sprortcar extends Vehicle {
+class Sportcar extends Vehicle {
     @Override
     public void run() {
         System.out.println("스포츠카가 달립니다.");

@@ -14,7 +14,7 @@ public class PolyMain {
 
         switch (menu) {
             case 1:
-                driver.drive(new Sprortcar());
+                driver.drive(new Sportcar());
                 break;
             case 2:
                 driver.drive(new Sedan());
